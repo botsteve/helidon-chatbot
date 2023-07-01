@@ -1,0 +1,4 @@
+security:
+  enabled: false
+llm:
+  path: /Users/srusen/Downloads/ggml-gpt4all-j-v1.3-groovy.bin
