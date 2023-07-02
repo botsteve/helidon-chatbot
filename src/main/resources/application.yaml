@@ -2,3 +2,13 @@ security:
   enabled: false
 llm:
   path: /Users/srusen/Downloads/ggml-gpt4all-j-v1.3-groovy.bin
+
+cors:
+  enabled: true
+  paths:
+    - path-pattern: /*
+      allow-origins: [ "*" ]
+      allow-methods: [ "*" ]
+      allow-headers: [ "*" ]
+      allow-credentials: true
+      max-age: -1
