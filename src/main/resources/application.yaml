@@ -2,6 +2,15 @@ security:
   enabled: false
 llm:
   path: /Users/srusen/Downloads/ggml-gpt4all-j-v1.3-groovy.bin
+  npredict: 4096
+  temp: 0.28
+  topk: 40
+  topp: 0.95
+  debug: false
+
+server:
+  port: 8080
+  host: 0.0.0.0
 
 cors:
   enabled: true

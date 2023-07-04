@@ -25,5 +25,6 @@ public class GPTChat implements ServerApplicationConfig {
 
   public static void main(String[] args) {
     Server.create().start();
+    LLMService.init();
   }
 }
