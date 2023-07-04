@@ -1,7 +1,7 @@
 security:
   enabled: false
 llm:
-  path: /Users/srusen/Downloads/ggml-gpt4all-j-v1.3-groovy.bin
+  path: /Users/srusen/Library/Application Support/nomic.ai/GPT4All/nous-hermes-13b.ggmlv3.q4_0.bin
   npredict: 4096
   temp: 0.28
   topk: 40

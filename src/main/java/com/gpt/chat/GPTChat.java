@@ -12,6 +12,7 @@ import java.util.Set;
 @ApplicationScoped
 @RoutingPath("/")
 public class GPTChat implements ServerApplicationConfig {
+
   @Override
   public Set<ServerEndpointConfig> getEndpointConfigs(Set<Class<? extends Endpoint>> endpoints) {
     assert endpoints.isEmpty();
@@ -25,6 +26,5 @@ public class GPTChat implements ServerApplicationConfig {
 
   public static void main(String[] args) {
     Server.create().start();
-    LLMService.init();
   }
 }

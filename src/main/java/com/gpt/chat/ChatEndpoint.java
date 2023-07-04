@@ -1,5 +1,7 @@
 package com.gpt.chat;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.websocket.CloseReason;
 import jakarta.websocket.OnClose;
 import jakarta.websocket.OnError;
@@ -14,11 +16,17 @@ import java.util.logging.Logger;
 @ServerEndpoint(value = "/chat",
                 decoders = {JSONTextDecoder.class},
                 encoders = {JSONTextEncoder.class})
+@ApplicationScoped
 public class ChatEndpoint {
 
   private static final Logger LOGGER = Logger.getLogger(ChatEndpoint.class.getSimpleName());
 
   protected static final Set<Session> chatters = new CopyOnWriteArraySet<>();
+
+  private final LLMService llmService;
+
+  @Inject
+  public ChatEndpoint(LLMService llmService) { this.llmService = llmService; }
 
   @OnOpen
   public void onOpen(Session session) {
@@ -29,7 +37,7 @@ public class ChatEndpoint {
   @OnMessage
   public void onMessage(String message, Session session) {
     LOGGER.info(String.format("Information received: %s from %s ", message, session.getId()));
-    LLMService.getResponse(session, message);
+    session.getAsyncRemote().sendObject(llmService.getResponse(session, message));
   }
 
   @OnError
